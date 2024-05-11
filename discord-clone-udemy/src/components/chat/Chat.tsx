@@ -9,7 +9,6 @@ import ChatMessage from "./ChatMessage";
 import { useAppSelector } from "../../app/hooks";
 import {
   collection,
-  CollectionReference,
   DocumentData,
   addDoc,
   DocumentReference,
@@ -18,7 +17,6 @@ import {
   Timestamp,
 } from 'firebase/firestore';
 import { db } from "../../firebase";
-import { async } from "@firebase/util";
 
 interface Messages {
   timestamp: Timestamp;
@@ -90,15 +88,15 @@ const Chat = ()  => {
     <div className="chat">
       <ChatHeader channelName={channelName}/>
 
-      <div className="chatMessage">
-        {messages.map((message,index) => {
-          <ChatMessage
-            key={index}
-            message={message.message}
-            timestamp={message.timestamp}
-            user={message.user}
-           />
-        })}
+      <div className="chatMessages">
+        {messages.map((message, index) => (
+        <ChatMessage
+          key={index}
+          message={message.message}
+          timestamp={message.timestamp}
+          user={message.user}
+        />
+        ))}
       </div>
 
       <div className="chatInput">
