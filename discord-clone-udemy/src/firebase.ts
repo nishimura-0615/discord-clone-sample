@@ -4,10 +4,10 @@ import {getFirestore} from "firebase/firestore";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-
+const APIKEY = process.env.React_APP_DISCORD_CLONE_API_KEY;
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCeSCZNZd5p1XepDoJ_B8hnaDlh1PwyGyU",
+  apiKey: APIKEY,
   authDomain: "discord-clone-udemy-2e16c.firebaseapp.com",
   projectId: "discord-clone-udemy-2e16c",
   storageBucket: "discord-clone-udemy-2e16c.appspot.com",
