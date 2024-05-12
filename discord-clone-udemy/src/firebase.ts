@@ -2,17 +2,24 @@
 import { initializeApp } from "firebase/app";
 import {getFirestore} from "firebase/firestore";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
+
+const APIKEY = process.env.React_APP_DISCORD_CLONE_API_KEY;
+const AUTHDOMAIN = process.env.React_APP_DISCORD_CLONE_AUTHDOMAIN_KEY
+const PROJECTID = process.env.React_APP_DISCORD_CLONE_PROJECT_ID
+const STORAGEBUCKET = process.env.React_APP_DISCORD_CLONE_STORAGE_BUCKET
+const MESSAGINGSENDERID = process.env.React_APP_DISCORD_CLONE_MESSAGING_SENDER_ID
+const APPID = process.env.React_APP_DISCORD_CLONE_APP_ID
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-const APIKEY = process.env.React_APP_DISCORD_CLONE_API_KEY;
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: APIKEY,
-  authDomain: "discord-clone-udemy-2e16c.firebaseapp.com",
-  projectId: "discord-clone-udemy-2e16c",
-  storageBucket: "discord-clone-udemy-2e16c.appspot.com",
-  messagingSenderId: "876496745429",
-  appId: "1:876496745429:web:af0edd7cb196aea4bb035c"
+  authDomain: AUTHDOMAIN,
+  projectId: PROJECTID,
+  storageBucket: STORAGEBUCKET,
+  messagingSenderId: MESSAGINGSENDERID,
+  appId: APPID,
 };
 
 // Initialize Firebase
