@@ -18,7 +18,7 @@ const ChatHeader= (props: Props) => {
       <div className="chatHeaderLeft">
         <h3>
           <span className="chatHeaderHash">#</span>
-         { channelName }
+         {channelName}
         </h3>
       </div>
 
@@ -30,7 +30,6 @@ const ChatHeader= (props: Props) => {
         <div className="chatHeaderSearch">
           <input type="text" placeholder="検索" />
           <SearchIcon />
-
         </div>
         <SendIcon />
         <HelpIcon />

@@ -11,11 +11,15 @@
     .chatHeaderHash {
       color: #7b7c85;
       padding-right: 7px;
+      align-items: center;
+      display: flex;
     }
 
 
     h3 {
       color: white;
+      display: flex;
+      align-items: center;
     }
   }
 
@@ -30,13 +34,14 @@
     .chatHeaderSearch {
       display: flex;
       align-items: center;
+      color: gray;
       background-color: #282831;
       padding: 3px;
       border-radius: 3px;
 
       input {
         background: transparent;
-        outline: none;
+        outline: 0;
         color: white;
         border: none;
       }

@@ -36,10 +36,10 @@ const Sidebar = () => {
 
       <div className="sidebarLeft">
         <div className='serverIcon'>
-          <img src="./discordIcon.png" alt="" />
+        <img src="./discordicon.png" alt="" style={{ width: '50px', height: '50px' }} />
         </div>
         <div className='serverIcon'>
-          <img src="./logo192.png" alt="" />
+          <img src="./logo192.png" alt="" style={{ width: '50px', height: '50px' }}/>
         </div>
 
       </div>

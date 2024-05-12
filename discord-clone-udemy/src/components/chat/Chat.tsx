@@ -15,48 +15,20 @@ import {
   onSnapshot,
   serverTimestamp,
   Timestamp,
+  CollectionReference,
 } from 'firebase/firestore';
 import { db } from "../../firebase";
+import useSubCollection from '../../hooks/useSubCollection';
 
-interface Messages {
-  timestamp: Timestamp;
-  message: string;
-  user: {
-      uid: string;
-      photo: string;
-      email: string;
-      displayName: string;
-  }
-}
 
 
 const Chat = ()  => {
-  const [inputText, setInputText] = useState<string>("");
-  const [messages, setMessages] = useState<Messages[]>([]);
-  const channelName = useAppSelector((state) => state.channel.channelName);
   const channelId = useAppSelector((state) => state.channel.channelId);
+  const channelName = useAppSelector((state) => state.channel.channelName);
   const user = useAppSelector((state) => state.user.user);
-
-  useEffect(() => {
-    let collectionRef = collection(
-      db,
-      "channels",
-      String(channelId),
-      "messages"
-    );
-
-    onSnapshot(collectionRef, (snapshot) => {
-      let results: Messages[] = [];
-      snapshot.docs.forEach((doc) => {
-        results.push({
-          timestamp: doc.data().timestamp,
-          message: doc.data().message,
-          user: doc.data().user,
-        });
-      });
-      setMessages(results);
-    });
-  }, [channelId]);
+  const [inputText, setInputText] = useState<string>("");
+  const { subDocuments: messages } = useSubCollection("channels","messages")
+  // console.log(channelName)
 
 
 
@@ -65,7 +37,7 @@ const Chat = ()  => {
     e.preventDefault();
 
     //channlesの中のmessageコレクションの中に新しくデータを入れる。
-    const collectionRef = collection(
+    const collectionRef: CollectionReference<DocumentData> = collection(
       db,
       "channels",
       String(channelId),
@@ -74,13 +46,12 @@ const Chat = ()  => {
     const docRef: DocumentReference<DocumentData> = await addDoc(
       collectionRef,
       {
-        timestamp: serverTimestamp(),
         message: inputText,
+        timestamp: serverTimestamp(),
         user: user,
       }
     );
     console.log(docRef);
-
     setInputText("");
   };
 

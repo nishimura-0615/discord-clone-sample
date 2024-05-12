@@ -2,7 +2,7 @@
   display: flex;
   flex:0.35;//homeの35%を占有することを記載
   height: 100vh;
-  // background-color: #393943;
+  background-color: #393943;
 
 
   .sidebarleft {
@@ -10,7 +10,7 @@
     flex-direction: column;
     align-items: center;
     background-color: #1a1c20;
-    padding: 7px 15px;
+    padding: 10px 15px;
 
 
     .serverIcon {
@@ -32,10 +32,11 @@
     }
   }
   .sidebarRight {
-    background-color: #393943;
+    display: flex;
+    flex-direction: column;
+    background-color: #2b2d33;
     width: 300px;
     position: relative;
-    flex-grow: 1;
     .sidebarTop{
       color: #ffffff;
       display: flex;
@@ -50,9 +51,9 @@
         color: white;
         display: flex;
         justify-content: space-between;
-        margin-top: 5px;
+        margin-bottom: 5px;
         align-items: center;
-        margin-top: 5px;
+
 
         .sidebarHeader {
           display: flex;
@@ -67,8 +68,10 @@
       position: absolute;
       bottom: 0;
       display: flex;
+      align-items: center;
       align-content: space-between;
       width: 93%;
+      border-top: 1px solid #686a6e;
       padding-bottom: 10px;
       margin-left: -3px;
 
@@ -77,8 +80,9 @@
         align-items: center;
 
         img {
-          width: 55px;
+          width: 50px;
           border-radius: 50%;
+          cursor: pointer;
         }
 
         .accountName {
