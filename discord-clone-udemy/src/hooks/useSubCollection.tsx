@@ -3,8 +3,6 @@ import {
   onSnapshot,
   collection,
   query,
-  DocumentData,
-  Query,
   orderBy,
   Timestamp,
 } from "firebase/firestore";
@@ -15,10 +13,10 @@ interface Messages {
   timestamp: Timestamp;
   message: string;
   user: {
-      uid: string;
-      photo: string;
-      email: string;
-      displayName: string;
+    uid: string;
+    photo: string;
+    email: string;
+    displayName: string;
   }
 }
 
@@ -54,7 +52,6 @@ const useSubCollection = (
         });
       });
       setSubDocuments(results);
-      console.log(results);
     });
   }, [channelId]);
   return { subDocuments };

@@ -6,7 +6,7 @@
   height: 100vh;
 
   .chatMessage {
-    height: 100vh;
+    flex-grow: 1;
     overflow-y: scroll;
   }
 
@@ -14,21 +14,26 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 15px;
+    padding: 10px;
     background-color: #474b53;
     border-radius: 5px;
-    margin: 20px;
+    margin: 10px;
     color: lightgray;
+    position: fixed; // 画面下部に固定するために修正
+    bottom: 0; // 画面下部に配置するように修正
+    width: 100%; // 幅を100%に修正
+
 
     form {
       flex-grow: 1;
       input {
-        padding: 15px;
+        padding: 10px;
         background: transparent;
         border: none;
         outline: none;
         color: white;
         font-size: large;
+        width: 100%;
       }
       .chatInputButton {
         display: none;

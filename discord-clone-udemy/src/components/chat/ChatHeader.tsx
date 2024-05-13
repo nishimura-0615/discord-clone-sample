@@ -26,14 +26,15 @@ const ChatHeader= (props: Props) => {
         <NotificationsIcon />
         <PushPinIcon />
         <PeopleAltIcon />
-      </div>
         <div className="chatHeaderSearch">
           <input type="text" placeholder="検索" />
           <SearchIcon />
         </div>
         <SendIcon />
         <HelpIcon />
+      </div>
     </div>
+
 
   )
 };

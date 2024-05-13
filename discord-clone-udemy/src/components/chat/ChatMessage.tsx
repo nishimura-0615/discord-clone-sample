@@ -1,5 +1,5 @@
 import React from "react";
-import"./ChatMessage.scss";
+import "./ChatMessage.scss";
 import { Avatar } from "@mui/material";
 import { Timestamp } from "firebase/firestore";
 
@@ -23,8 +23,6 @@ const Chatmessage = (props: Props) => {
          {user?.displayName}
           <span className="messageTimestamp">
             {new Date(timestamp?.toDate()).toLocaleString()}
-
-
           </span>
         </h4>
         <p>{message}</p>
