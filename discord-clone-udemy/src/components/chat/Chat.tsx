@@ -8,14 +8,12 @@ import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
 import ChatMessage from "./ChatMessage";
 import { useAppSelector } from "../../app/hooks";
 import {
-  collection,
-  DocumentData,
   addDoc,
-  DocumentReference,
-  onSnapshot,
-  serverTimestamp,
-  Timestamp,
+  collection,
   CollectionReference,
+  DocumentData,
+  DocumentReference,
+  serverTimestamp,
 } from 'firebase/firestore';
 import { db } from "../../firebase";
 import useSubCollection from '../../hooks/useSubCollection';
@@ -73,15 +71,17 @@ const Chat = ()  => {
       <div className="chatInput">
         <AddCircleOutlineIcon />
         <form>
-          <input type="text" placeholder="#Udemyへメッセージを送信"
+          <input type="text" placeholder="#メッセージ送信"
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setInputText(e.target.value)
             }
+            value={inputText}
+            disabled={Boolean(!channelId)}
           />
           <button
             type="submit"
             className="chatInputButton"
-            onClick={(e) => sendMessage(e)}
+            onClick={(e: React.MouseEvent<HTMLElement>) => sendMessage(e)}
           >
             送信
           </button>
@@ -91,10 +91,9 @@ const Chat = ()  => {
           <GifIcon />
           <EmojiEmotionsIcon />
         </div>
-
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Chat;
