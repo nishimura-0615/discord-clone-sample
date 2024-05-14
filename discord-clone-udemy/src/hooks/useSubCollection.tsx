@@ -38,7 +38,7 @@ const useSubCollection = (
 
     const collectionRefOrderBy = query(
       collectionRef,
-      orderBy("timestamp", "desc") // 昇順にソート
+      orderBy("timestamp", "asc") // 昇順にソート
     );
 
     //onSnapshot:リアルタイムでデータベースに変更を反映させる
