@@ -19,7 +19,8 @@ interface Messages {
     displayName: string;
   }
 }
-
+  //useEffect:チャンネル名とメッセージを格納。
+  //useState:メッセージの状態管理
 const useSubCollection = (
   collectionName: string,
   subCollectionName: string
@@ -35,11 +36,11 @@ const useSubCollection = (
       subCollectionName,
     );
 
+    //昇順にソート
     const collectionRefOrderBy = query(
       collectionRef,
       orderBy("Timestamp","desc")
     );
-
 
     //onSnapshot:リアルタイムでデータベースに変更を反映させる
     onSnapshot(collectionRefOrderBy, (snapshot) => {
@@ -53,7 +54,7 @@ const useSubCollection = (
       });
       setSubDocuments(results);
     });
-  }, [channelId]);
+  }, [channelId, collectionName, subCollectionName]);
   return { subDocuments };
 };
 

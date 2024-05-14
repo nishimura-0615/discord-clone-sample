@@ -13,6 +13,7 @@ interface Channels {
   channel: DocumentData;
 }
 
+  //リアルタイムで取得したチャンネルデータを返している
 const useCollection = (data: string) => {
   const [documents,setDocuments] = useState<Channels[]>([]);
   const collectionRef: Query<DocumentData> = query(collection(db, data));
