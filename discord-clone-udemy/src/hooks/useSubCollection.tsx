@@ -35,10 +35,10 @@ const useSubCollection = (
       String(channelId),
       subCollectionName,
     );
-
+    // 降順にソート
     const collectionRefOrderBy = query(
       collectionRef,
-      orderBy("timestamp", "asc") // 昇順にソート
+      orderBy("timestamp", "desc")
     );
 
     //onSnapshot:リアルタイムでデータベースに変更を反映させる
