@@ -1,4 +1,4 @@
-import { useEffect,useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   onSnapshot,
   collection,
@@ -19,11 +19,12 @@ interface Messages {
     displayName: string;
   }
 }
-
+  //useEffect:チャンネル名とメッセージを格納。
+  //useState:メッセージの状態管理
 const useSubCollection = (
   collectionName: string,
   subCollectionName: string
-  ) => {
+) => {
   const channelId = useAppSelector((state) => state.channel.channelId);
   const [subDocuments, setSubDocuments] = useState<Messages[]>([]);
 
@@ -34,12 +35,11 @@ const useSubCollection = (
       String(channelId),
       subCollectionName,
     );
-
+    // 降順にソート
     const collectionRefOrderBy = query(
       collectionRef,
-      orderBy("Timestamp","desc")
+      orderBy("timestamp", "desc")
     );
-
 
     //onSnapshot:リアルタイムでデータベースに変更を反映させる
     onSnapshot(collectionRefOrderBy, (snapshot) => {
@@ -53,7 +53,8 @@ const useSubCollection = (
       });
       setSubDocuments(results);
     });
-  }, [channelId]);
+  }, [channelId, collectionName, subCollectionName]);
+
   return { subDocuments };
 };
 

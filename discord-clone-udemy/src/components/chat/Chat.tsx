@@ -1,4 +1,4 @@
-import React,  { useEffect, useState } from 'react'
+import React,  { useState } from 'react'
 import"./Chat.scss";
 import ChatHeader from './ChatHeader';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
@@ -13,26 +13,55 @@ import {
   CollectionReference,
   DocumentData,
   DocumentReference,
-  serverTimestamp,
+  serverTimestamp
 } from 'firebase/firestore';
 import { db } from "../../firebase";
 import useSubCollection from '../../hooks/useSubCollection';
 
 
 
+
 const Chat = ()  => {
+  const [inputText, setInputText] = useState<string>("");
   const channelId = useAppSelector((state) => state.channel.channelId);
   const channelName = useAppSelector((state) => state.channel.channelName);
-  const user = useAppSelector((state) => state.user.user);
-  const [inputText, setInputText] = useState<string>("");
-  const { subDocuments: messages } = useSubCollection("channels","messages")
-  // console.log(channelName)
+  const user = useAppSelector((state) => state.user.user)
+  const { subDocuments: messages } = useSubCollection("channels", "messages");
+  // const { subDocuments: messages } = useSubCollection("channels","messages")
+  // useEffect(() => {
+  //   let collectionRef = collection(
+  //     db,
+  //     "channels",
+  //     String(channelId),
+  //     "messages",
+  //   );
+
+  //   const collectionRefOrderBy = query(
+  //     collectionRef,
+  //     orderBy("Timestamp","desc")
+  //   );
+
+  //   //onSnapshot:リアルタイムでデータベースに変更を反映させる
+  //   onSnapshot(collectionRefOrderBy, (snapshot) => {
+  //     let results: Messages[] = [];
+  //     snapshot.docs.forEach((doc) => {
+  //       results.push({
+  //         timestamp: doc.data().timestamp,
+  //         message: doc.data().message,
+  //         user: doc.data().user,
+  //       });
+  //     });
+  //     setMessages(results);
+  //     console.log(results);
+  //   });
+  // }, [channelId]);
 
 
 
 
-  const sendMessage = async (e: React.MouseEvent<HTMLElement>) => {
+  const sendMessage = async (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
     e.preventDefault();
+    console.log("send message")
 
     //channlesの中のmessageコレクションの中に新しくデータを入れる。
     const collectionRef: CollectionReference<DocumentData> = collection(
@@ -50,7 +79,7 @@ const Chat = ()  => {
       }
     );
     console.log(docRef);
-    setInputText("");
+    setInputText("")
   };
 
   return(
@@ -81,7 +110,7 @@ const Chat = ()  => {
           <button
             type="submit"
             className="chatInputButton"
-            onClick={(e: React.MouseEvent<HTMLElement>) => sendMessage(e)}
+            onClick={(e: React.MouseEvent<HTMLElement, MouseEvent>) => sendMessage(e)}
           >
             送信
           </button>

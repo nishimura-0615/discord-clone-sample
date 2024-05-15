@@ -21,7 +21,8 @@ const Chatmessage = (props: Props) => {
       <div className="messageInfo">
         <h4>
          {user?.displayName}
-          <span className="messageTimestamp">
+          <span className="messagetimestamp">
+            {/* toDateで受け取った日時を文字列に変換 */}
             {new Date(timestamp?.toDate()).toLocaleString()}
           </span>
         </h4>
